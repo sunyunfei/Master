@@ -112,6 +112,7 @@ class HomePost: NSObject {
         }
     }
     
+    
     //大师请求接口
     static func post_master(success:@escaping ((Array<MasterModel>) ->()),failure:@escaping ((String) -> ())){
         
@@ -172,6 +173,39 @@ class HomePost: NSObject {
                 }
                 
                 success(homeArrays)
+            }
+        }
+    }
+    
+    
+    //活动请求接口
+    static func post_homeById(activeId:String,success:@escaping ((ActiveModel) ->()),failure:@escaping ((String) -> ())){
+        
+        let bquery:BmobQuery = BmobQuery.init(className: "active")
+        bquery.whereKey("activeId", equalTo: activeId)
+        
+        bquery.findObjectsInBackground { (array, error) in
+            
+            if error != nil{
+                
+                failure("数据请求失败")
+            }else{
+                
+                let rArray:Array<BmobObject> = array as! Array<BmobObject>
+                let model:ActiveModel = ActiveModel()
+                for obj:BmobObject in rArray{
+                    
+                    model.objectId = obj.objectId
+                    model.activeId = obj.object(forKey: "activeId") as? String
+                    model.name = obj.object(forKey: "name") as? String
+                    model.icon = obj.object(forKey: "icon") as? String
+                    model.describe = obj.object(forKey: "describe") as? String
+                    model.bm = obj.object(forKey: "bm") as? String
+                    let date:Date = obj.createdAt
+                    model.time = self.dateConvertString(date: date, dateFormat: "yyyy-MM-dd hh:mm:ss")
+                }
+                
+                success(model)
             }
         }
     }
@@ -363,6 +397,39 @@ class HomePost: NSObject {
         
     }
     
+    //删除报名的活动
+    static func post_deleteActive(_ activeId:String,success:@escaping (() ->()),failure:@escaping ((String) -> ())){
+        
+        let d:UserDefaults = UserDefaults.init()
+        let account:String? = d.object(forKey: "location_user") as? String
+        
+        let bquery:BmobQuery = BmobQuery.init(className: "active_bm")
+        bquery.whereKey("userId", equalTo: account)
+        bquery.whereKey("activeId", equalTo: activeId)
+        bquery.findObjectsInBackground { (array, error) in
+            
+            if error != nil{
+                
+                failure("数据请求失败")
+            }else{
+                let rArray:Array<BmobObject> = array as! Array<BmobObject>
+                for obj:BmobObject in rArray{
+                    
+                    obj.deleteInBackground({ (flag, error) in
+                        
+                        if flag{
+                            
+                            success()
+                        }else{
+                            
+                            failure((error?.localizedDescription)!)
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
     //比赛报名
     //获取报过的
     static func post_obtainBsBm(success:@escaping ((Array<BSBMModel>) ->()),failure:@escaping ((String) -> ())){
@@ -399,7 +466,40 @@ class HomePost: NSObject {
         }
     }
     
-    //关注大师
+    //删除报名的比赛
+    static func post_deleteBS(_ bsId:String,success:@escaping (() ->()),failure:@escaping ((String) -> ())){
+        
+        let d:UserDefaults = UserDefaults.init()
+        let account:String? = d.object(forKey: "location_user") as? String
+        
+        let bquery:BmobQuery = BmobQuery.init(className: "bs_bm")
+        bquery.whereKey("userId", equalTo: account)
+        bquery.whereKey("bsId", equalTo: bsId)
+        bquery.findObjectsInBackground { (array, error) in
+            
+            if error != nil{
+                
+                failure("数据请求失败")
+            }else{
+                let rArray:Array<BmobObject> = array as! Array<BmobObject>
+                for obj:BmobObject in rArray{
+                    
+                    obj.deleteInBackground({ (flag, error) in
+                        
+                        if flag{
+                            
+                            success()
+                        }else{
+                            
+                            failure((error?.localizedDescription)!)
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    //比赛报名
     static func post_careBsBm(_ model:BSModel,success:@escaping (() ->()),failure:@escaping ((String) -> ())){
         
         let d:UserDefaults = UserDefaults.init()

@@ -52,7 +52,7 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
     private func loadData(){
         self.view.endEditing(true)
         self.tableDatas.removeAll()
-        
+        self.headView.isHidden = false
         self.view.makeToastActivity(.center)
         TrainTools.post_train(success: { (array) in
             
@@ -88,11 +88,26 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
         }
     }
     
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        
+        let str:String = (textField.text)!
+        if str.count <= 0{
+            self.view.endEditing(true)
+            self.headView.makeToast("请输入内容")
+            return true
+        }
+        
+        searchByKey()
+        return true
+    }
+    
     private func searchByKey(){
         self.view.endEditing(true)
         let str:String? = searchField.text
         
         showAllData = false
+        
+        self.headView.isHidden = true
         
         if someDatas.count > 0{
             
