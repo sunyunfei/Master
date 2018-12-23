@@ -50,7 +50,7 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
     }
     
     private func loadData(){
-        self.view.endEditing(true)
+        searchField.resignFirstResponder();
         self.tableDatas.removeAll()
         self.headView.isHidden = false
         self.view.makeToastActivity(.center)
@@ -102,7 +102,7 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
     }
     
     private func searchByKey(){
-        self.view.endEditing(true)
+        searchField.resignFirstResponder();
         let str:String? = searchField.text
         
         showAllData = false
@@ -144,7 +144,7 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
     
     //进入咨询页
     @IBAction func clickAskBtn(_ sender: Any) {
-        self.view.endEditing(true)
+        searchField.resignFirstResponder();
         let story:UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         let askVC:TrainAskController = story.instantiateViewController(withIdentifier: "ask") as! TrainAskController
         askVC.hidesBottomBarWhenPushed = true
@@ -176,7 +176,7 @@ class TrainController: UITableViewController,ZCycleViewProtocol,UITextFieldDeleg
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.view.endEditing(true)
+        searchField.resignFirstResponder();
         let story:UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         let detailVC:TrainDetailController = story.instantiateViewController(withIdentifier: "t_detail") as! TrainDetailController
         detailVC.hidesBottomBarWhenPushed = true

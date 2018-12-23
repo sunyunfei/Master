@@ -876,7 +876,7 @@
         <scene sceneID="2jN-CP-bDn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I66-sv-C02" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="活动" id="M7T-bX-rou"/>
+                    <tabBarItem key="tabBarItem" title="活动" image="home_Selected-" id="M7T-bX-rou"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="btP-3S-f1u">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1006,7 +1006,7 @@
         <scene sceneID="lH7-vj-wSm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="baQ-Ui-QOZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="HMQ-YO-CSH"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="My_normal" id="HMQ-YO-CSH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5bf-l6-zss">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1025,7 +1025,7 @@
         <scene sceneID="Ldh-RC-cg3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DR6-2y-Uqg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="训练" id="jhA-nD-Ubu"/>
+                    <tabBarItem key="tabBarItem" title="训练" image="Setting_normal" id="jhA-nD-Ubu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uZH-nn-UDD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1044,7 +1044,7 @@
         <scene sceneID="Byg-Zb-cmq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GZL-Fa-dVV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="俱乐部" id="B1r-JE-4rX"/>
+                    <tabBarItem key="tabBarItem" title="俱乐部" image="product_normal" id="B1r-JE-4rX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5OT-hT-NYC">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1161,7 +1161,7 @@
         <scene sceneID="eN2-Cl-dCK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nIW-Zx-CrK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="晒图" id="GmO-3R-TB5"/>
+                    <tabBarItem key="tabBarItem" title="晒图" image="my_selected" id="GmO-3R-TB5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XoJ-NV-ALw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1283,4 +1283,11 @@
             <point key="canvasLocation" x="2808.8000000000002" y="-473.6131934032984"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="My_normal" width="21" height="21"/>
+        <image name="Setting_normal" width="21" height="21"/>
+        <image name="home_Selected-" width="21" height="21"/>
+        <image name="my_selected" width="21" height="21"/>
+        <image name="product_normal" width="21" height="21"/>
+    </resources>
 </document>

@@ -235,6 +235,7 @@ class MineShowTableViewController: UITableViewController {
             let story:UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
             let detail:PXDetailViewController = story.instantiateViewController(withIdentifier: "px_detail") as! PXDetailViewController
             detail.activeModel = self.datas[indexPath.row]
+            detail.isMaster = false
             detail.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(detail, animated: true)
             
